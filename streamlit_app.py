@@ -5,62 +5,47 @@ st.set_page_config(page_title="Chinese Visa Application Guide")
 
 # Define the languages and their corresponding markdown content
 languages = {
-    "English": """
+    "English": ("""
 # How to Apply for a Chinese Visa (English)
 
-## Introduction
-
-This is the introduction section in English...
-
-## Step 1
-
-...
-
-## Step 2
-
-...
-
-(8000 words of content in English)
-""",
-    "Japanese": """
+... (8000 words of content in English)
+""", "Select Language"),
+    "Japanese": ("""
 # 中国ビザの申請方法(日本語)
 
-## はじめに
-
-これは日本語の紹介セクションです...
-
-## ステップ1
-
-...
-
-## ステップ2
-
-...
-
-(8000 words of content in Japanese)
-""",
-    "Korean": """
+... (8000 words of content in Japanese)
+""", "言語を選択"),
+    "Korean": ("""
 # 중국 비자 신청 방법 (한국어)
 
-## 소개
+... (8000 words of content in Korean)
+""", "언어 선택"),
+    "Portuguese": ("""
+# Como Solicitar um Visto Chinês (Português)
 
-이것은 한국어 소개 섹션입니다...
+... (8000 words of content in Portuguese)
+""", "Selecione o Idioma"),
+    "French": ("""
+# Comment demander un visa chinois (Français)
 
-## 1단계
+... (8000 words of content in French)
+""", "Sélectionnez la langue"),
+    "Italian": ("""
+# Come richiedere un visto cinese (Italiano)
 
-...
+... (8000 words of content in Italian)
+""", "Seleziona la lingua"),
+    "Traditional Chinese": ("""
+# 如何申請中國簽證 (繁體中文)
 
-## 2단계
-
-...
-
-(8000 words of content in Korean)
-""",
-    # Add more languages and their corresponding markdown content here
+... (8000 words of content in Traditional Chinese)
+""", "選擇語言")
 }
 
 # Create a sidebar for language selection
-selected_language = st.sidebar.selectbox("Select Language", list(languages.keys()))
+language_options = [lang for lang, _ in languages.values()]
+selected_language = st.sidebar.selectbox(language_options[0], language_options)
+selected_content, _ = languages[selected_language]
 
 # Display the content based on the selected language
-st.markdown(languages[selected_language])
+st.markdown(selected_content)
